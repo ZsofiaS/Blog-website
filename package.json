@@ -20,7 +20,7 @@
     "express-session": "^1.17.0",
     "express-validator": "^6.2.0",
     "froala-editor": "^3.0.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.5",
     "mongoose-findorcreate": "^3.0.0",
