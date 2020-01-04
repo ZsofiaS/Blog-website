@@ -1,0 +1,57 @@
+<%- include("partials/header"); -%>
+
+  <h1><%=title%></h1>
+
+  <div class="posted-info">
+  <p class="posted">Posted by <%=username%> on <%=date.toLocaleString("en-GB", { day: "numeric", month: "long", year: "numeric"})%></p>
+
+<% tags.forEach(function(tag) { %>
+  <span class="tags"><%=tag %></span>
+<% }) %>
+
+  </div>
+
+  <img class="image" src="<%=image%>" />
+  <div class="content">
+      <p><%-content%></p>
+    </div>
+
+<div class="comment-section">
+
+  <% if (comments.length <1 || comments == undefined) { %>
+    <h4 class="comment-title">There are no comments yet.</h4>
+<%  } else { %>
+    <h4 class="comment-title">Comments</h4>
+
+    <%  comments.forEach(function(comment) { %>
+      <div class="comment">
+      <p class="comment-info"><span class="comment-name"><%=comment.name%></span> wrote on <%=comment.date.toLocaleString("en-GB", { minute: "numeric", hour: "numeric", day: "numeric", month: "short", year: "numeric"})%>:</p>
+      <p class="comment-content">
+        <%=comment.comment%>
+      </p>
+      </div>
+      <% }) %>
+
+  <% } %>
+
+<% if (userId) { %>
+  <a class="btn btn-primary" href="/delete/<%=id %>">Delete Post</a>
+<% } %>
+
+
+</div>
+<div class="comment-form form">
+
+  <form class="" action="/posts/:postId" method="post">
+    <div class="form-group">
+      <label>Your name</label>
+      <input type="hidden" name="postId" value=<%=id%>>
+      <input class="form-control" type="text" name="commentName" placeholder="Your name...">
+      <label>Comment</label>
+      <textarea class="form-control" name="commentBody" rows="5" cols="30" placeholder="Content..."></textarea>
+
+    </div>
+    <button class="btn btn-primary" type="submit" name="button">Submit</button>
+  </form>
+</div>
+<%- include("partials/footer"); -%>

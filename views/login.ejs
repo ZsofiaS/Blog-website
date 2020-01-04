@@ -1,0 +1,21 @@
+<%- include("partials/header"); -%>
+
+<h1>Login</h1>
+
+<form class="form" action="/login" method="POST" encType="multipart/form-data">
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label for="">Email</label>
+      <input type="email" name="email" placeholder="Email..." value="" class="form-control">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <label for="">Password</label>
+      <input type="password" name="password" placeholder="Password..." value="" class="form-control">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" name="button">Login</button>
+  </form>
+
+<%- include("partials/footer"); -%>

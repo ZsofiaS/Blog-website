@@ -1,0 +1,31 @@
+
+<%- include("partials/header"); -%>
+    <h1>Create a new post</h1>
+    <form class="form" action="/compose" method="post"  enctype='multipart/form-data' >
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="postTitle" placeholder="Title...">
+        <label>Image</label>
+        <input class="form-control" type="url" name="postImage" placeholder="URL...">
+        <label>Post</label>
+        <textarea id="edit" class="form-control" name="postBody" rows="5" cols="30" placeholder="Content..."></textarea>
+        <label>Tags</label>
+        <select multiple name="postTags" class="form-control">
+          <option value="travel">travel</option>
+          <option value="study">study</option>
+          <option value="work">work</option>
+          <option value="dogs">dogs</option>
+          <option value="cats">cats</option>
+        </select>
+
+        <% if (locals.errors) { %>
+          <div>
+            Please fill in all details for the blog post.
+            </div>
+        <% } %>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+    </form>
+
+
+<%- include("partials/footer"); -%>

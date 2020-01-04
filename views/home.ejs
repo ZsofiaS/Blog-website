@@ -1,0 +1,75 @@
+
+<%- include("partials/header"); -%>
+
+<% if (username) { %>
+  <h1>Hi <%=username%>!</h1>
+<% } else { %>
+  <h1 id="main-heading">Hello!</h1>
+<% } %>
+
+    <p> <%= startingContent %> </p>
+    <p> <%= startingContent2 %> </p>
+
+  <% if (userId) { %>
+    <button class="btn btn-primary new-post" onclick="location.href='compose'" type="button">NEW POST</button>
+<%  } %>
+
+  <%  posts.forEach(function(post) { %>
+
+    <% let tags = post.tags; %>
+
+    <h1><a class="readmore" href="/posts/<%=post._id%>"><%=post.title%></a></h1>
+    <div class="posted-info">
+      <p class="posted">Posted by
+        <%=post.username %>
+        on <%=post.date.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric"})%>
+      </p>
+      <% tags.forEach(function(tag) { %>
+        <span class="tags"><%=tag %></span>
+     <%  }) %>
+    </div>
+
+<div class="post-container">
+
+<div class="leftside">
+ <%  if (post.image) { %>
+    <img class="thumbnail" src="<%=post.image%>" alt="">
+<%  } %>
+
+ </div>
+
+<div class="rightside">
+
+    <div class="content-box">
+
+        <%  if (post.content.length < 10) { %>
+          <%-post.content%>
+        <%  } else if (post.content.length <= 200){ %>
+        <%-post.content%>
+        <% } else { %>
+        <%-post.content.substring(0,200)%><a class="readmore" href="/posts/<%=post._id%>">... Read More</a>
+    <% } %>
+  </div>
+
+    <%  let commentNumber = []; %>
+    <%  comments.forEach(function(comment) { %>
+      <%    if (comment.commentid == post._id) { %>
+        <%    commentNumber.push(comment.comment); %>
+        <%    } %>
+      <%  }) %>
+
+    <div class="comment-box">
+      <%  if (commentNumber.length > 1) { %>
+          <p class="comment-number">   <i class="fa fa-comment fa-2x"> </i><%=commentNumber.length %> comments</p>
+          <%    } else if (commentNumber.length === 1) { %>
+          <p class="comment-number">  <i class="fa fa-comment fa-2x"> </i><%=commentNumber.length %> comment </p> %>
+          <%    }  %>
+
+    </div>
+
+    </div>
+    </div>
+    <%}) %>
+
+
+<%- include("partials/footer"); -%>
