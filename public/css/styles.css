@@ -7,6 +7,7 @@
 }
 html {
   min-height: 100%;
+  /* width: 100vw; */
   position: relative;
   font-size: 62.5%;
   line-height: 1.5;
@@ -15,7 +16,7 @@ body {
   color: dimgray;
   background-color: ivory;
   font-family: 'Quicksand', sans-serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 h1 {
   font-size: 5rem;
@@ -41,6 +42,9 @@ li {
 input, textarea {
   width: 70% !important;
 }
+input {
+  margin-bottom: 1rem;
+}
 
 /*NAVIGATION*/
 
@@ -52,6 +56,7 @@ input, textarea {
   border-radius: 0;
   margin-bottom: 0;
   letter-spacing: 5px;
+    /* width: 100vw; */
 }
 .navbar-nav  li a {
   padding: 4px;
@@ -65,7 +70,8 @@ input, textarea {
 }
 .purple {
   position: absolute;
-  width: 100vw;
+  width: 100%;
+  left: 0%;
   height: 2px;
   background: #A80874;
   top: 100%;
@@ -118,7 +124,7 @@ input, textarea {
 .thumbnail {
   width: 90%;
   overflow: hidden;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: none;
 }
@@ -173,7 +179,7 @@ input, textarea {
   font-size: 1.4rem;
   color: #fff;
   background-color: #A80874;
-  margin: 0 -1.3rem 2rem 0;
+  margin: 0 0 2rem 0;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
 }
@@ -206,19 +212,22 @@ input, textarea {
 .comment-form {
   width: 60%;
   margin-bottom: 5rem;
-
+}
 /*CONTACT*/
 
 .form {
   width: 60%;
 }
 .contact {
+  padding: 0.8rem 2rem !important;
   color: #A80874;
-  padding: 0.8rem 2rem;
+}
+#contact1 {
+  padding: 0.8rem 2rem 0.8rem 0 !important;
 }
 .contact-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 /*NEW POST*/
@@ -228,11 +237,51 @@ input, textarea {
 }
 
 /*MEDIA QUERIES*/
-@ media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
+  .container {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  .content {
+    padding: 1rem 0;
+  }
   .rightside {
-    width: 70%;
+    width: 60%;
   }
   .leftside {
-    width: 30%;
+    width: 40%;
+  }
+  .comment-form {
+    width: 80%;
+    margin-bottom: 5rem;
+  }
+  .comment-section {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 54%;
+  }
+  .rightside {
+    width: 90%;
+  }
+  .leftside {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+  .post-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .content {
+    padding: 1rem 0;
+    margin: 0;
+  }
+  .comment-form {
+    width: 100%;
+    margin-bottom: 5rem;
   }
 }
