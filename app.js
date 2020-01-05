@@ -41,8 +41,6 @@ app.use(function(req, res, next) {
 
 mongoose.connect("mongodb+srv://" + process.env.MONGO_ID + ":" + process.env.MONGO_PASS + "@cluster0-mbatm.mongodb.net/blogDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
-// mongoose.connect("mongodb+srv://mokus:test123@cluster0-mbatm.mongodb.net/blogDB", {useNewUrlParser: true, useUnifiedTopology: true});
-
 const commentSchema = {
   name: String,
   date: Date,
